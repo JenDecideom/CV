@@ -1,261 +1,401 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jenny Nguyen, UX UI Designer</title>
-<style>
-  :root{
-    --ink:#1b1b1a;
-    --ink-soft:#4a4a46;
-    --ink-faint:#7c7c74;
-    --paper:#faf7f1;
-    --card:#ffffff;
-    --line:#e4ded3;
-    --accent:#b8503c;
-    --accent-soft:#f0e3dc;
-    --sidebar:#f3eee5;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"Helvetica Neue","Segoe UI",Helvetica,Arial,sans-serif;
-    font-size:14px;
-    line-height:1.5;
-    padding:32px 16px 72px;
-    display:flex;
-    justify-content:center;
-  }
-  .page{
-    width:210mm;
-    max-width:100%;
-    background:var(--card);
-    box-shadow:0 8px 40px rgba(40,30,20,.10);
-    display:grid;
-    grid-template-columns:66mm 1fr;
-    overflow:hidden;
-  }
-  .side{
-    background:var(--sidebar);
-    padding:26px 22px 40px;
-    border-right:1px solid var(--line);
-  }
-  .name{
-    font-family:Charter,Georgia,"Times New Roman",serif;
-    font-size:30px;
-    line-height:1.02;
-    font-weight:600;
-    letter-spacing:-.01em;
-  }
-  .name span{display:block;}
-  .role{
-    margin-top:10px;
-    font-size:11px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-weight:600;
-  }
-  .years{
-    margin-top:6px;
-    font-size:12.5px;
-    color:var(--ink-soft);
-  }
-  .side-block{margin-top:24px;}
-  .side-block h2{
-    font-size:10.5px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    color:var(--ink-faint);
-    font-weight:700;
-    padding-bottom:7px;
-    margin-bottom:11px;
-    border-bottom:1px solid var(--line);
-  }
-  .contact-row{
-    font-size:12.5px;
-    color:var(--ink-soft);
-    margin-bottom:5px;
-    word-break:break-word;
-  }
-  .contact-row strong{color:var(--ink);font-weight:600;}
-  .skill-group{margin-bottom:12px;}
-  .skill-group h3{
-    font-size:12px;
-    font-weight:700;
-    color:var(--ink);
-    margin-bottom:4px;
-  }
-  .skill-group p{
-    font-size:12px;
-    color:var(--ink-soft);
-    line-height:1.45;
-  }
-  .tags{display:flex;flex-wrap:wrap;gap:5px;}
-  .tag{
-    font-size:11px;
-    background:var(--card);
-    border:1px solid var(--line);
-    color:var(--ink-soft);
-    padding:2.5px 8px;
-    border-radius:11px;
-  }
-  .lang-row{
-    display:flex;
-    justify-content:space-between;
-    font-size:12.5px;
-    color:var(--ink-soft);
-    margin-bottom:4px;
-  }
-  .lang-row b{color:var(--ink);font-weight:600;}
-  .main{padding:26px 30px 40px;}
-  .profil{
-    font-size:13.5px;
-    line-height:1.6;
-    color:var(--ink-soft);
-    border-left:3px solid var(--accent);
-    padding-left:16px;
-  }
-  .profil strong{color:var(--ink);font-weight:600;}
-  .section{margin-top:22px;}
-  .section > h2{
-    font-size:11px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-weight:700;
-    margin-bottom:14px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .section > h2::after{
-    content:"";
-    flex:1;
-    height:1px;
-    background:var(--line);
-  }
-  .exp{
-    padding-left:16px;
-    border-left:2px solid var(--line);
-    margin-bottom:17px;
-    page-break-inside:avoid;
-  }
-  .exp.lead{border-left-color:var(--accent);}
-  .exp-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .exp-co{
-    font-family:Charter,Georgia,serif;
-    font-size:15.5px;
-    font-weight:600;
-    color:var(--ink);
-  }
-  .exp-date{
-    font-size:11px;
-    color:var(--ink-faint);
-    white-space:nowrap;
-  }
-  .exp-role{
-    font-size:12.5px;
-    color:var(--accent);
-    font-weight:600;
-    margin:1px 0 5px;
-  }
-  .exp-desc{
-    font-size:12.5px;
-    color:var(--ink-soft);
-    line-height:1.5;
-  }
-  .exp-desc b{color:var(--ink);font-weight:600;}
-  .proj{margin-top:10px;padding-left:2px;page-break-inside:avoid;}
-  .proj-title{
-    font-size:12.5px;
-    font-weight:700;
-    color:var(--ink);
-  }
-  .proj-title .sector{
-    font-weight:400;
-    font-style:italic;
-    color:var(--ink-faint);
-    font-size:11px;
-  }
-  .proj ul{list-style:none;margin-top:3px;}
-  .proj li{
-    font-size:12px;
-    color:var(--ink-soft);
-    line-height:1.48;
-    padding-left:14px;
-    position:relative;
-    margin-bottom:2px;
-  }
-  .proj li::before{
-    content:"";
-    position:absolute;
-    left:2px;top:7px;
-    width:4px;height:4px;
-    background:var(--accent);
-    border-radius:50%;
-  }
-  .proj-env{
-    font-size:11px;
-    color:var(--ink-faint);
-    margin-top:3px;
-    padding-left:14px;
-  }
-  .proj-env b{color:var(--ink-soft);font-weight:600;}
-  .mini-label{
-    font-size:11px;
-    font-weight:700;
-    color:var(--ink-soft);
-    letter-spacing:.04em;
-    margin:12px 0 4px;
-  }
-  .clients{
-    background:var(--accent-soft);
-    padding:11px 14px;
-    font-size:12px;
-    color:var(--ink-soft);
-    line-height:1.6;
-    margin-top:10px;
-  }
-  .clients b{color:var(--ink);font-weight:600;}
-  .edu{margin-bottom:10px;page-break-inside:avoid;}
-  .edu .yr{
-    font-size:11px;
-    font-weight:700;
-    color:var(--accent);
-    letter-spacing:.03em;
-  }
-  .edu .deg{font-size:12.5px;font-weight:600;color:var(--ink);margin-top:1px;}
-  .edu .sch{font-size:11.5px;color:var(--ink-faint);}
-  .edu-note{
-    font-size:11.5px;
-    color:var(--ink-soft);
-    line-height:1.5;
-    margin-top:4px;
-    padding-left:11px;
-    border-left:2px solid var(--accent-soft);
-  }
-  .edu-note b{color:var(--ink);font-weight:600;}
-  @media (max-width:720px){
-    body{padding:16px 8px 72px;}
-    .page{grid-template-columns:1fr;}
-    .side{border-right:none;border-bottom:1px solid var(--line);}
-  }
-  @media print{
-    @page{size:A4;margin:0;}
-    body{padding:0;background:#fff;}
-    .page{box-shadow:none;width:210mm;min-height:297mm;}
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jenny Nguyen, UX UI Designer</title>
+  <style>
+    :root {
+      --ink: #1b1b1a;
+      --ink-soft: #4a4a46;
+      --ink-faint: #7c7c74;
+      --paper: #faf7f1;
+      --card: #ffffff;
+      --line: #e4ded3;
+      --accent: #b8503c;
+      --accent-soft: #f0e3dc;
+      --sidebar: #f3eee5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 32px 16px 72px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 210mm;
+      max-width: 100%;
+      background: var(--card);
+      box-shadow: 0 8px 40px rgba(40, 30, 20, .10);
+      display: grid;
+      grid-template-columns: 66mm 1fr;
+      overflow: hidden;
+    }
+
+    .side {
+      background: var(--sidebar);
+      padding: 26px 22px 40px;
+      border-right: 1px solid var(--line);
+    }
+
+    .name {
+      font-family: Charter, Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 1.02;
+      font-weight: 600;
+      letter-spacing: -.01em;
+    }
+
+    .name span {
+      display: block;
+    }
+
+    .role {
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .years {
+      margin-top: 6px;
+      font-size: 12.5px;
+      color: var(--ink-soft);
+    }
+
+    .side-block {
+      margin-top: 24px;
+    }
+
+    .side-block h2 {
+      font-size: 10.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 700;
+      padding-bottom: 7px;
+      margin-bottom: 11px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-row {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-bottom: 5px;
+      word-break: break-word;
+    }
+
+    .contact-row strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .skill-group {
+      margin-bottom: 12px;
+    }
+
+    .skill-group h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .skill-group p {
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.45;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag {
+      font-size: 11px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      color: var(--ink-soft);
+      padding: 2.5px 8px;
+      border-radius: 11px;
+    }
+
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .lang-row b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .main {
+      padding: 26px 30px 40px;
+    }
+
+    .profil {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+    }
+
+    .profil strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .section>h2 {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section>h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .exp {
+      padding-left: 16px;
+      border-left: 2px solid var(--line);
+      margin-bottom: 17px;
+      page-break-inside: avoid;
+    }
+
+    .exp.lead {
+      border-left-color: var(--accent);
+    }
+
+    .exp-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .exp-co {
+      font-family: Charter, Georgia, serif;
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .exp-date {
+      font-size: 11px;
+      color: var(--ink-faint);
+      white-space: nowrap;
+    }
+
+    .exp-role {
+      font-size: 12.5px;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 1px 0 5px;
+    }
+
+    .exp-desc {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .exp-desc b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .proj {
+      margin-top: 10px;
+      padding-left: 2px;
+      page-break-inside: avoid;
+    }
+
+    .proj-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .proj-title .sector {
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-faint);
+      font-size: 11px;
+    }
+
+    .proj ul {
+      list-style: none;
+      margin-top: 3px;
+    }
+
+    .proj li {
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.48;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 2px;
+    }
+
+    .proj li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 7px;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .proj-env {
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-top: 3px;
+      padding-left: 14px;
+    }
+
+    .proj-env b {
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .mini-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-soft);
+      letter-spacing: .04em;
+      margin: 12px 0 4px;
+    }
+
+    .clients {
+      background: var(--accent-soft);
+      padding: 11px 14px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .clients b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .edu {
+      margin-bottom: 10px;
+      page-break-inside: avoid;
+    }
+
+    .edu .yr {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .03em;
+    }
+
+    .edu .deg {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 1px;
+    }
+
+    .edu .sch {
+      font-size: 11.5px;
+      color: var(--ink-faint);
+    }
+
+    .edu-note {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin-top: 4px;
+      padding-left: 11px;
+      border-left: 2px solid var(--accent-soft);
+    }
+
+    .edu-note b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    @media (max-width:720px) {
+      body {
+        padding: 16px 8px 72px;
+      }
+
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .side {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      .page {
+        box-shadow: none;
+        width: 210mm;
+        min-height: 297mm;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="page">
     <!-- SIDEBAR -->
@@ -275,23 +415,28 @@
         <h2 data-dia-edit-id="1743c090-6b35-45ed-8bf3-be6ec336120a">Compétences</h2>
         <div class="skill-group">
           <h3 data-dia-edit-id="c75ccecb-2c6d-4245-b8d8-1c9e849ef4df">Recherche &amp; Discovery</h3>
-          <p data-dia-edit-id="7bf5bf9a-dbde-49d7-9dfd-79a4fb4bd64e">Entretiens, sondages, tri de cartes, personas, parcours &amp; journey maps, évaluation heuristique, tests d'utilisabilité (SUS), analytics</p>
+          <p data-dia-edit-id="7bf5bf9a-dbde-49d7-9dfd-79a4fb4bd64e">Entretiens, sondages, tri de cartes, personas,
+            parcours &amp; journey maps, évaluation heuristique, tests d'utilisabilité (SUS), analytics</p>
         </div>
         <div class="skill-group">
           <h3 data-dia-edit-id="9ff144d7-c1c7-44db-8bac-584cd0c57c60">Conception UX / UI</h3>
-          <p data-dia-edit-id="119b5a3b-8c75-40b1-b096-f1ddced5994c">Architecture de l'information, wireframes, maquettes, prototypes interactifs, design system, dataviz, accessibilité (RGAA)</p>
+          <p data-dia-edit-id="119b5a3b-8c75-40b1-b096-f1ddced5994c">Architecture de l'information, wireframes,
+            maquettes, prototypes interactifs, design system, dataviz, accessibilité (RGAA)</p>
         </div>
         <div class="skill-group">
           <h3 data-dia-edit-id="b394376f-8092-4478-a36f-307cc7a4cb17">Direction artistique</h3>
-          <p data-dia-edit-id="6d08ddd7-5711-4656-8261-bfdeeae7f8d0">Identité visuelle, déclinaison de charte, iconographie</p>
+          <p data-dia-edit-id="6d08ddd7-5711-4656-8261-bfdeeae7f8d0">Identité visuelle, déclinaison de charte,
+            iconographie</p>
         </div>
         <div class="skill-group">
           <h3 data-dia-edit-id="64a949e5-d8b9-4f17-8021-b4e42c1e8763">Data-viz / BI</h3>
-          <p data-dia-edit-id="7591911d-570c-4ce7-8a3b-c4cdbfadcd5e">Thèmes &amp; templates Power BI et Qlik Sense, conception de dashboards</p>
+          <p data-dia-edit-id="7591911d-570c-4ce7-8a3b-c4cdbfadcd5e">Thèmes &amp; templates Power BI et Qlik Sense,
+            conception de dashboards</p>
         </div>
         <div class="skill-group">
           <h3 data-dia-edit-id="e1f99f1c-4510-4c41-92eb-7d179a877cad">Développement front-end</h3>
-          <p data-dia-edit-id="02a1dbce-244a-4126-8bad-03edcc2d9270">HTML, CSS, SASS, JavaScript, TypeScript, Vue.js / Nuxt.js, Git</p>
+          <p data-dia-edit-id="02a1dbce-244a-4126-8bad-03edcc2d9270">HTML, CSS, SASS, JavaScript, TypeScript, Vue.js /
+            Nuxt.js, Git</p>
         </div>
       </div>
 
@@ -319,7 +464,8 @@
         <h2 data-dia-edit-id="294563b6-7583-4a96-bfad-4ab57f139fc5">Loisirs</h2>
         <div class="skill-group">
           <h3 data-dia-edit-id="a6e37538-c699-43d7-a0e9-5cce1e7a7539">Musique</h3>
-          <p data-dia-edit-id="ddb3d0db-c2bd-492e-b939-63dde3a1f962">Chanteuse au Chœur Universitaire de Lille ; piano, guitare et ukulélé</p>
+          <p data-dia-edit-id="ddb3d0db-c2bd-492e-b939-63dde3a1f962">Chanteuse au Chœur Universitaire de Lille ; piano,
+            guitare et ukulélé</p>
         </div>
         <div class="skill-group">
           <h3 data-dia-edit-id="1908a6cb-a73e-4935-9e99-73398338efdb">Roller</h3>
@@ -327,7 +473,8 @@
         </div>
         <div class="skill-group">
           <h3 data-dia-edit-id="a70f77fa-0478-4def-8694-80898a678649">Univers ludique</h3>
-          <p data-dia-edit-id="c32c2e9c-227d-441c-94e9-007b831286dc" spellcheck="false">Jeux de société, cartes Magic, jeux vidéo</p>
+          <p data-dia-edit-id="c32c2e9c-227d-441c-94e9-007b831286dc" spellcheck="false">Jeux de société, cartes Magic,
+            jeux vidéo</p>
         </div>
       </div>
     </aside>
@@ -335,7 +482,11 @@
     <!-- MAIN -->
     <main class="main">
       <p class="profil" data-dia-edit-id="52bc15cb-93f0-4699-b901-516ba56cfcf2">
-        <strong>Designer UX / UI généraliste</strong>, +8 ans d'expérience sur des produits digitaux, applications métier et outils décisionnels. J'interviens sur <strong>toute la chaîne de conception</strong> — de la recherche utilisateur aux interfaces finales et au design system — pour des secteurs variés : santé, banque, industrie, retail, logement social, secteur public. <strong>5 ans passés comme développeuse front-end</strong> avant le design : une double culture qui fluidifie le dialogue avec les équipes techniques.
+        <strong>Designer UX / UI généraliste</strong>, +8 ans d'expérience sur des produits digitaux, applications
+        métier et outils décisionnels. J'interviens sur <strong>toute la chaîne de conception</strong> — de la recherche
+        utilisateur aux interfaces finales et au design system — pour des secteurs variés : santé, banque, industrie,
+        retail, logement social, secteur public. <strong>5 ans passés comme développeuse front-end</strong> avant le
+        design : une double culture qui fluidifie le dialogue avec les équipes techniques.
       </p>
 
       <section class="section">
@@ -348,25 +499,36 @@
           </div>
           <div class="exp-role">UX / UI Designer — missions clients &amp; projets internes</div>
           <div class="exp-desc">
-            Centre de compétences Data &amp; UX. Missions de recherche, conception et data-viz chez des clients grands comptes, et projets de design internes.
+            Centre de compétences Data &amp; UX. Missions de recherche, conception et data-viz chez des clients grands
+            comptes, et projets de design internes.
           </div>
 
           <div class="proj">
-            <div class="proj-title">ONI — Ordre National des Infirmiers <span class="sector">· Santé / ordre professionnel</span></div>
+            <div class="proj-title">ONI — Ordre National des Infirmiers <span class="sector">· Santé / ordre
+                professionnel</span></div>
             <ul>
-              <li data-dia-edit-id="87e1be07-98e1-4758-a0ef-c9ff896dc506"><b>Refonte des rapports Power BI</b> décisionnels à destination des élus et des responsables administratifs (état de la population infirmière, décisions formations &amp; plans de campagne)</li>
-              <li data-dia-edit-id="30f726c1-16a3-4048-8f65-efaac02778c4">11 entretiens utilisateurs sur 6 profils, synthèse et priorisation de 62 insights (Airtable) ; identification des frictions structurelles et opportunités de conception</li>
-              <li data-dia-edit-id="ba3d5720-7860-43c1-bf50-ae51cb960add">Accompagnement du service communication : palettes de couleurs par thématique pour les supports publics (PDF)</li>
+              <li data-dia-edit-id="87e1be07-98e1-4758-a0ef-c9ff896dc506"><b>Refonte des rapports Power BI</b>
+                décisionnels à destination des élus et des responsables administratifs (état de la population
+                infirmière, décisions formations &amp; plans de campagne)</li>
+              <li data-dia-edit-id="30f726c1-16a3-4048-8f65-efaac02778c4">11 entretiens utilisateurs sur 6 profils,
+                synthèse et priorisation de 62 insights (Airtable) ; identification des frictions structurelles et
+                opportunités de conception</li>
+              <li data-dia-edit-id="ba3d5720-7860-43c1-bf50-ae51cb960add">Accompagnement du service communication :
+                palettes de couleurs par thématique pour les supports publics (PDF)</li>
             </ul>
             <div class="proj-env"><b>Environnement :</b> Power BI, Figma, Figjam, Airtable, Dovetail</div>
           </div>
 
           <div class="proj">
-            <div class="proj-title">SIA Habitat — Refonte du parcours de recouvrement <span class="sector">· Logement social</span></div>
+            <div class="proj-title">SIA Habitat — Refonte du parcours de recouvrement <span class="sector">· Logement
+                social</span></div>
             <ul>
-              <li data-dia-edit-id="032a72a8-5705-413f-9fba-f8e54b4b77ea">Cadrage des objectifs et analyse de l'existant avec les équipes métier</li>
-              <li data-dia-edit-id="cb37cc27-dd65-4257-8b5f-b98f8057cf91">Reconstruction du parcours étape par étape, wireframes et maquettes</li>
-              <li data-dia-edit-id="77f7d19f-cf99-43e8-8128-77f3860d173d">Tests utilisateurs, restitution des retours et itérations de conception</li>
+              <li data-dia-edit-id="032a72a8-5705-413f-9fba-f8e54b4b77ea">Cadrage des objectifs et analyse de l'existant
+                avec les équipes métier</li>
+              <li data-dia-edit-id="cb37cc27-dd65-4257-8b5f-b98f8057cf91">Reconstruction du parcours étape par étape,
+                wireframes et maquettes</li>
+              <li data-dia-edit-id="77f7d19f-cf99-43e8-8128-77f3860d173d">Tests utilisateurs, restitution des retours et
+                itérations de conception</li>
             </ul>
             <div class="proj-env"><b>Environnement :</b> Figma, Figjam</div>
           </div>
@@ -374,16 +536,22 @@
           <div class="proj">
             <div class="proj-title">Projets internes Decideom</div>
             <ul>
-              <li data-dia-edit-id="f17599cc-aac5-4949-8113-e61c6bcf58a8"><b>Plateforme LMS</b> : conception UX/UI d'une plateforme de formation — architecture de l'information, parcours apprenant, maquettes, design system</li>
-              <li data-dia-edit-id="f84a4236-3148-4019-9c4d-047603c3baa0"><b>Refonte d'identité visuelle</b> : rebrand du logo et déclinaison de la charte graphique</li>
-              <li data-dia-edit-id="8f02c821-ae14-4d78-8258-55db4637d134"><b>Outils internes</b> : conception et développement d'outils métier (prototypage rapide assisté par IA)</li>
+              <li data-dia-edit-id="f17599cc-aac5-4949-8113-e61c6bcf58a8"><b>Plateforme LMS</b> : conception UX/UI d'une
+                plateforme de formation — architecture de l'information, parcours apprenant, maquettes, design system
+              </li>
+              <li data-dia-edit-id="f84a4236-3148-4019-9c4d-047603c3baa0"><b>Refonte d'identité visuelle</b> : rebrand
+                du logo et déclinaison de la charte graphique</li>
+              <li data-dia-edit-id="8f02c821-ae14-4d78-8258-55db4637d134"><b>Outils internes</b> : conception et
+                développement d'outils métier (prototypage rapide assisté par IA)</li>
             </ul>
           </div>
 
           <div class="mini-label">Autres missions au sein du centre de compétences</div>
           <div class="clients">
-            <b>ArcelorMittal</b> · <b>SNCF</b> · <b>Monabanq</b> · <b>Boulanger</b> · <b>Maisons &amp; Cités</b> · <b>Nosoli</b> · <b>AG2R</b> · <b>Grand Aménagement Paris</b> · <b>Ville de Calais</b> · <b>ATIH</b>
-            <br>Migrations et refontes de dashboards (Power BI / Qlik Sense), refontes de parcours web &amp; mobile, thèmes &amp; templates BI, ateliers de cadrage et tests utilisateurs.
+            <b>ArcelorMittal</b> · <b>SNCF</b> · <b>Monabanq</b> · <b>Boulanger</b> · <b>Maisons &amp; Cités</b> ·
+            <b>Nosoli</b> · <b>AG2R</b> · <b>Grand Aménagement Paris</b> · <b>Ville de Calais</b> · <b>ATIH</b>
+            <br>Migrations et refontes de dashboards (Power BI / Qlik Sense), refontes de parcours web &amp; mobile,
+            thèmes &amp; templates BI, ateliers de cadrage et tests utilisateurs.
           </div>
         </div>
 
@@ -406,8 +574,10 @@
           </div>
           <div class="exp-role">Développeuse Front-End / UX Designer</div>
           <div class="exp-desc">
-            App <b>Coco Cooking</b> : développement web et back-office avec l'équipe design, réflexion UX et documentation produit, analyses de données utilisateurs (Amplitude, tests, interviews qualitatives).
-            <br><span class="proj-env" style="padding-left:0"><b>Environnement :</b> Figma, Sketch, Miro, Dovetail / HTML-CSS, SASS, JS, TypeScript, Vue.js, Nuxt.js, Vuex, GitHub, AWS</span>
+            App <b>Coco Cooking</b> : développement web et back-office avec l'équipe design, réflexion UX et
+            documentation produit, analyses de données utilisateurs (Amplitude, tests, interviews qualitatives).
+            <br><span class="proj-env" style="padding-left:0"><b>Environnement :</b> Figma, Sketch, Miro, Dovetail /
+              HTML-CSS, SASS, JS, TypeScript, Vue.js, Nuxt.js, Vuex, GitHub, AWS</span>
           </div>
         </div>
 
@@ -418,8 +588,10 @@
           </div>
           <div class="exp-role">Développeuse Front-End / UX Designer</div>
           <div class="exp-desc">
-            Plateforme de jeux de piste en réalité augmentée : intégration web, développement de fonctionnalités et contribution à l'UX.
-            <br><span class="proj-env" style="padding-left:0"><b>Environnement :</b> Photoshop, Adobe XD / HTML-CSS, SASS, Bootstrap, Vue.js, Node.js, Twig, JS, Bitbucket</span>
+            Plateforme de jeux de piste en réalité augmentée : intégration web, développement de fonctionnalités et
+            contribution à l'UX.
+            <br><span class="proj-env" style="padding-left:0"><b>Environnement :</b> Photoshop, Adobe XD / HTML-CSS,
+              SASS, Bootstrap, Vue.js, Node.js, Twig, JS, Bitbucket</span>
           </div>
         </div>
 
@@ -444,7 +616,9 @@
           <div class="yr">2023</div>
           <div class="deg">Certification UX Design</div>
           <div class="sch">GOBELINS, Paris</div>
-          <div class="edu-note"><b>Projet commandité — Caisse des Dépôts :</b> conception d'un support numérique aidant les jeunes en fin d'accompagnement à l'Aide Sociale à l'Enfance (ASE) à gagner en autonomie — recherche utilisateur, conception et tests.</div>
+          <div class="edu-note"><b>Projet commandité — Caisse des Dépôts :</b> conception d'un support numérique aidant
+            les jeunes en fin d'accompagnement à l'Aide Sociale à l'Enfance (ASE) à gagner en autonomie — recherche
+            utilisateur, conception et tests.</div>
         </div>
         <div class="edu">
           <div class="yr">2017</div>
@@ -460,6 +634,7 @@
     </main>
   </div>
 
+  <div style="height: 1px; width: 1px; pointer-events: none; opacity: 0;"></div>
+</body>
 
-<div id="dia-made-with-badge-container" style="position: fixed; bottom: 12px; left: 12px; right: 12px; z-index: 2147483647; display: flex; flex-direction: row; align-items: center; justify-content: flex-end; pointer-events: none;"><div id="dia-made-with-badge" style="width: fit-content; display: flex; align-items: center; background: rgba(255, 255, 255, 0.93); backdrop-filter: blur(12px); border-radius: 8px; opacity: 1; box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; transform: translateY(0px); transition: opacity 0.3s, transform 0.3s;"><img src="data:image/png;base64,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" style="width:121px;height:27px;" alt="Made with Dia"></div></div><div style="height: 1px; width: 1px; pointer-events: none; opacity: 0;"></div></body>
 </html>
